@@ -4,3 +4,13 @@
   display: block;
   margin: 0 auto;
 }
+
+.navigation {
+  display: flex;
+  column-gap: 20px;
+}
+
+.navigationButton {
+  padding: 10px 15px;
+  cursor: pointer;
+}

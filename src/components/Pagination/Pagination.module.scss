@@ -1,0 +1,11 @@
+.pagination {
+  display: flex;
+  padding: 20px 0;
+  column-gap: 20px;
+
+  &__item {
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+  }
+}

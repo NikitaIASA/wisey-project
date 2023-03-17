@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CourseCard from "../CourseCard";
 import Skeleton from "../Skeleton";
@@ -6,6 +6,7 @@ import Skeleton from "../Skeleton";
 import classes from "./CoursesDashboard.module.scss";
 
 const CoursesDashboard = ({ courses, isLoading }) => {
+
   const skeletons = [...new Array(8)].map((_, index) => (
     <Skeleton key={index} />
   ));
