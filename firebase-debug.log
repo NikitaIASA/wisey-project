@@ -1,0 +1,21 @@
+[debug] [2023-03-16T13:31:15.352Z] ----------------------------------------------------------------------
+[debug] [2023-03-16T13:31:15.354Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ASUS\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-03-16T13:31:15.355Z] CLI Version:   11.24.1
+[debug] [2023-03-16T13:31:15.355Z] Platform:      win32
+[debug] [2023-03-16T13:31:15.355Z] Node Version:  v18.15.0
+[debug] [2023-03-16T13:31:15.357Z] Time:          Thu Mar 16 2023 15:31:15 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-03-16T13:31:15.357Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-16T13:31:15.366Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-16T13:31:15.366Z] > authorizing via signed-in user (fffounderrr@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\ASUS\Desktop\1_week_projects\wisey-app
+
