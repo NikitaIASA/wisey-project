@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import LessonCard from "../LessonCard";
-import Skeleton from "../Skeleton";
+// import Skeleton from "../Skeleton";
 
 import classes from "./LessonsDashboard.module.scss";
 
@@ -13,11 +13,11 @@ const CoursesDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
 
   return (
     <div className={classes.lessons}>
-      {lessons.map((lesson, index) => (
+      {lessons && lessons.map((lesson, index) => (
         <LessonCard
+          key={lesson.id}
           index={index}
           currentLesson={currentLesson}
-          key={lesson.id}
           {...lesson}
           setLesson={() => setCurrentLesson(index)}
         />

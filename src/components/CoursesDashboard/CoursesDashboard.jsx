@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CourseCard from "../CourseCard";
 import Skeleton from "../Skeleton";
@@ -16,7 +16,7 @@ const CoursesDashboard = ({ courses, isLoading }) => {
       {isLoading
         ? skeletons
         : courses &&
-          courses.map((course) => <CourseCard key={course.id} {...course} />)}
+          courses.map((course) => <CourseCard key={course.id} course={course}/>)}
     </div>
   );
 };

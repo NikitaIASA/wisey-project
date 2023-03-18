@@ -17,6 +17,19 @@ const Home = ({ courses, isLoading }) => {
 
   const selectPageHandler = (pageNumber) => setCurrentPage(pageNumber);
 
+  const PrevPageHandler = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const NextPageHandler = () => {
+    const maxPage = Math.ceil(courses.length / coursiesPerPage);
+    if (currentPage < maxPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
     <>
       <img className={classes.logo} src={logo} alt="logo" />
@@ -31,16 +44,10 @@ const Home = ({ courses, isLoading }) => {
         selectPageHandler={selectPageHandler}
       ></Pagination>
       <div className={classes.navigation}>
-        <button
-          className={classes.navigationButton}
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-        >
+        <button className={classes.navigationButton} onClick={PrevPageHandler}>
           Prev page
         </button>
-        <button
-          className={classes.navigationButton}
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-        >
+        <button className={classes.navigationButton} onClick={NextPageHandler}>
           Next page
         </button>
       </div>

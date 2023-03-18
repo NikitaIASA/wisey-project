@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useParams } from "react-router-dom";
+
 import LessonsDashboard from "../LessonsDashboard";
 
 import classes from "./CourseDetails.module.scss";
@@ -6,8 +8,9 @@ import classes from "./CourseDetails.module.scss";
 import VideoPlayer from "../VideoPlayer";
 
 const CourseDetails = ({ lessons }) => {
+  const { id } = useParams();
   const [currentLesson, setCurrentLesson] = useState(0);
-
+  const playerRef = useRef(null);
   console.log(lessons);
   console.log(currentLesson);
 
@@ -33,9 +36,41 @@ const CourseDetails = ({ lessons }) => {
     },
   };
 
+  const handlePlayerReady = (player) => {
+    playerRef.current = player;
+  
+    // player.on("waiting", () => {
+    //   VideoPlayer.log("player is waiting");
+    // });
+  
+    const courseId = id; 
+    const lessonId = lessons[currentLesson].id; // Assuming lesson objects have an "id" property
+    
+    if (localStorage.getItem(courseId)) {
+      const lessonsData = JSON.parse(localStorage.getItem(courseId));
+      const currentLessonTime = lessonsData[lessonId] || 0;
+      player.currentTime(currentLessonTime);
+    }
+  
+    player.on("timeupdate", () => {
+      const lessonsData = JSON.parse(localStorage.getItem(courseId)) || {};
+      localStorage.setItem(
+        courseId,
+        JSON.stringify({
+          ...lessonsData,
+          [lessonId]: player.currentTime(),
+        })
+      );
+    });
+  
+    // player.on("dispose", () => {
+    //   VideoPlayer.log("player will dispose");
+    // });
+  };
+
   return (
     <>
-      <VideoPlayer options={videoOptions} />
+      <VideoPlayer options={videoOptions} onReady={handlePlayerReady} />
       <LessonsDashboard lessons={lessons} currentLesson={currentLesson} setCurrentLesson={setCurrentLesson}/>
     </>
   );

@@ -1,10 +1,31 @@
 import React from "react";
+import { useSnackbar } from 'notistack';
 
 import classes from "./LessonCard.module.scss";
 
-const LessonCard = ({ title, status, previewImageLink, currentLesson, index, order, setLesson }) => {
+const LessonCard = ({
+  title,
+  status,
+  previewImageLink,
+  currentLesson,
+  index,
+  order,
+  setLesson,
+}) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const isLocked = status === "locked";
+
+  const lockNotify = () => {
+    enqueueSnackbar("This lesson is locked", {variant: 'error'});
+  }
+
   return (
-    <div className={`${classes.card} ${currentLesson === index ? classes.active : ""}`} onClick={setLesson}>
+    <div
+      className={`${classes.card} ${isLocked ? classes.locked : ""} ${
+        index === currentLesson ? classes.active : ""
+      }`}
+      onClick={!isLocked ? setLesson : lockNotify}
+    >
       <div className={classes.cardWrap}>
         <img
           className={classes.previewImageLink}
