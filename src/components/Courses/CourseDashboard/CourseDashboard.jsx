@@ -1,7 +1,7 @@
 import React from "react";
 
 import CourseDashboardCard from "../CourseDashboardCard";
-import Skeleton from "../../ui/Skeleton";
+import Skeleton from "../../UI/Skeleton";
 
 import classes from "./CourseDashboard.module.scss";
 

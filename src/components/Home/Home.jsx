@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import CourseDashboard from "../Courses/CourseDashboard";
-import NotFound from "../ui/NotFound";
-import Pagination from "../ui/Pagination/Pagination";
+import NotFound from "../UI/NotFound";
+import Pagination from "../UI/Pagination/Pagination";
 import logo from "../../assets/img/logo.jpg";
 
 import classes from "./Home.module.scss";
@@ -13,7 +13,7 @@ const Home = ({ courses, isLoading }) => {
 
   const lastCourseIndex = currentPage * coursiesPerPage;
   const firstCourseIndex = lastCourseIndex - coursiesPerPage;
-  const currentCourse = courses.slice(firstCourseIndex, lastCourseIndex);
+  const currentCourse = courses && courses.slice(firstCourseIndex, lastCourseIndex);
 
   const selectPageHandler = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -42,23 +42,27 @@ const Home = ({ courses, isLoading }) => {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
+  console.log(null ? 'true' : 'false');
+
   return (
     <>
       <img className={classes.logo} src={logo} alt="logo" />
       {courses ? (
-        <CourseDashboard courses={currentCourse} isLoading={isLoading} />
+        <>
+          <CourseDashboard courses={currentCourse} isLoading={isLoading} />
+          <Pagination
+            className={classes.pagination}
+            coursiesPerPage={coursiesPerPage}
+            selectPageHandler={selectPageHandler}
+            currentPage={currentPage}
+            totalCourses={courses.length}
+            PrevPageHandler={PrevPageHandler}
+            NextPageHandler={NextPageHandler}
+          />
+        </>
       ) : (
         <NotFound />
       )}
-      <Pagination
-        className={classes.pagination}
-        coursiesPerPage={coursiesPerPage}
-        selectPageHandler={selectPageHandler}
-        currentPage={currentPage}
-        totalCourses={courses.length}
-        PrevPageHandler={PrevPageHandler}
-        NextPageHandler={NextPageHandler}
-      />
     </>
   );
 };

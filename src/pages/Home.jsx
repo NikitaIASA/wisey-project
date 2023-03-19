@@ -13,13 +13,12 @@ const HomePage = () => {
       setIsLoading(true);
       try {
         const data = await getCourses();
-
-        console.log(data.courses);
         setCourses(data.courses);
         setIsLoading(false);
       } catch (err) {
         setCourses(null);
         setIsLoading(false);
+        console.log("There is an error with data fetchin!");
       }
     }
 

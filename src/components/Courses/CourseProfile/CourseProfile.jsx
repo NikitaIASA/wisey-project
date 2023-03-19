@@ -1,21 +1,19 @@
 import React, { useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-import VideoPlayer from "../../ui/VideoPlayer";
+import VideoPlayer from "../../UI/VideoPlayer";
 import LessonDashboard from "../../Lessons/LessonDashboard";
 import arrowBack from "../../../assets/img/arrowBack.svg";
 
 import classes from "./CourseProfile.module.scss";
 
 const CourseProfile = ({ lessons }) => {
-  const sortedLessons = lessons.sort((a, b) => a.order - b.order);
+  const sortedLessons = lessons && lessons.sort((a, b) => a.order - b.order);
+  
   const navigate = useNavigate();
   const { id } = useParams();
   const [currentLesson, setCurrentLesson] = useState(0);
   const playerRef = useRef(null);
-
-  console.log(lessons);
-  console.log(currentLesson);
 
   const videoOptions = {
     responsive: true,
@@ -65,16 +63,26 @@ const CourseProfile = ({ lessons }) => {
 
   return (
     <>
-      <div className={classes.back} onClick={() => navigate(-1)}>
+      <Link className={classes.back} to={navigate(-1)}>
         <img className={classes.back__img} src={arrowBack} alt="arrowBack" />
         <span className={classes.back__text}>Go Back</span>
-      </div>
-      <VideoPlayer className={classes.video} options={videoOptions} onReady={handlePlayerReady} />
-      <LessonDashboard
-        lessons={sortedLessons}
-        currentLesson={currentLesson}
-        setCurrentLesson={setCurrentLesson}
-      />
+      </Link>
+
+      {lessons && (
+        <>
+          <VideoPlayer 
+            className={classes.video} 
+            options={videoOptions} 
+            onReady={handlePlayerReady} 
+          />
+
+          <LessonDashboard
+            lessons={sortedLessons}
+            currentLesson={currentLesson}
+            setCurrentLesson={setCurrentLesson}
+          />
+        </>
+      )}
     </>
   );
 };

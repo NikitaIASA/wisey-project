@@ -12,9 +12,11 @@ const CoursePage = () => {
     async function loadCourseData() {
       try {
         const data = await getCourseById(id);
+
         setCourse(data);
       } catch (err) {
         setCourse(null);
+        
         console.log("There is an error with data fetchin!");
       }
     }

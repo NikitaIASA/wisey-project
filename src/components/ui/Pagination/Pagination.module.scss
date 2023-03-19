@@ -16,4 +16,7 @@
       color: #fff;
     }
   }
+  @media screen and (max-width: 576px) {
+    justify-content: center;
+  }
 }
