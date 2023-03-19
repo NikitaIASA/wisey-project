@@ -58,7 +58,7 @@ const CourseDashboardCard = ({
     <div className={classes.card}>
       <Link to={`./course/${id}`}>
         <div className={classes.cardWrap}>
-          {courseVideoPreview && courseVideoPreview.link ? (
+          {courseVideoPreview && courseVideoPreview.link ? ( // If there is no video preview, then show the picture
             <VideoPlayer
               className={classes.player}
               options={videoOptions}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CourseDashboard from "../Courses/CourseDashboard";
 import NotFound from "../ui/NotFound";
@@ -30,6 +30,17 @@ const Home = ({ courses, isLoading }) => {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  useEffect(() => {
+    const savedPage = localStorage.getItem("currentPage");
+    if (savedPage) {
+      setCurrentPage(parseInt(savedPage));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   return (
     <>
