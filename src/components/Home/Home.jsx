@@ -42,8 +42,6 @@ const Home = ({ courses, isLoading }) => {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
-  console.log(null ? 'true' : 'false');
-
   return (
     <>
       <img className={classes.logo} src={logo} alt="logo" />
