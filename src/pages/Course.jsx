@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { getCourseById } from "../api/wiseyApi";
-import CourseDetails from "../components/CourseDetails/CourseDetails";
+import CourseProfile from "../components/Courses/CourseProfile/CourseProfile";
 
 const CoursePage = () => {
   const { id } = useParams();
@@ -12,6 +12,7 @@ const CoursePage = () => {
     async function loadCourseData() {
       try {
         const data = await getCourseById(id);
+        
         setCourse(data);
       } catch (err) {
         console.log("There is an error with data fetchin!");
@@ -21,7 +22,7 @@ const CoursePage = () => {
     loadCourseData();
   }, [id]);
 
-  return course && (<CourseDetails {...course} />);
+  return course && (<CourseProfile {...course} />);
 };
 
 export default CoursePage;

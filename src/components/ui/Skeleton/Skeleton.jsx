@@ -17,6 +17,6 @@ const MyLoader = (props) => (
     <rect x="-3" y="160" rx="0" ry="0" width="100" height="17" /> 
 
   </ContentLoader>
-)
+);
 
 export default MyLoader

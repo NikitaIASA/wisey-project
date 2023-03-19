@@ -1,5 +1,6 @@
 .pagination {
   display: flex;
+  align-items: center;
   padding: 20px 0;
   column-gap: 20px;
 
@@ -7,5 +8,12 @@
     padding: 5px 10px;
     border: 1px solid grey;
     border-radius: 5px;
+    color: #1875f0;
+    cursor: pointer;
+    &:hover,
+    &.active {
+      background: #1875f0;
+      color: #fff;
+    }
   }
 }

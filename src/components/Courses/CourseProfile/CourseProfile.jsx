@@ -1,16 +1,15 @@
 import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 
-import LessonsDashboard from "../LessonsDashboard";
+import VideoPlayer from "../../ui/VideoPlayer";
+import LessonDashboard from "../../Lessons/LessonDashboard";
 
-import classes from "./CourseDetails.module.scss";
-
-import VideoPlayer from "../VideoPlayer";
-
-const CourseDetails = ({ lessons }) => {
+const CourseProfile = ({ lessons }) => {
   const { id } = useParams();
+
   const [currentLesson, setCurrentLesson] = useState(0);
   const playerRef = useRef(null);
+  
   console.log(lessons);
   console.log(currentLesson);
 
@@ -71,9 +70,9 @@ const CourseDetails = ({ lessons }) => {
   return (
     <>
       <VideoPlayer options={videoOptions} onReady={handlePlayerReady} />
-      <LessonsDashboard lessons={lessons} currentLesson={currentLesson} setCurrentLesson={setCurrentLesson}/>
+      <LessonDashboard lessons={lessons} currentLesson={currentLesson} setCurrentLesson={setCurrentLesson}/>
     </>
   );
 };
 
-export default CourseDetails;
+export default CourseProfile;

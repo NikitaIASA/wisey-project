@@ -9,10 +9,11 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchCharacters() {
+    async function fetchCourses() {
       setIsLoading(true);
       try {
         const data = await getCourses();
+
         console.log(data.courses);
         setCourses(data.courses);
         setIsLoading(false);
@@ -22,7 +23,7 @@ const HomePage = () => {
       }
     }
 
-    fetchCharacters();
+    fetchCourses();
   }, []);
 
   return <Home courses={courses} isLoading={isLoading} />;

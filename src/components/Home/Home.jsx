@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import CoursesDashboard from "../CoursesDashboard";
-import NotFound from "../NotFound";
-import Pagination from "../Pagination/Pagination";
+import CourseDashboard from "../Courses/CourseDashboard";
+import NotFound from "../ui/NotFound";
+import Pagination from "../ui/Pagination/Pagination";
 import logo from "../../assets/img/logo.jpg";
 
 import classes from "./Home.module.scss";
@@ -25,6 +25,7 @@ const Home = ({ courses, isLoading }) => {
 
   const NextPageHandler = () => {
     const maxPage = Math.ceil(courses.length / coursiesPerPage);
+
     if (currentPage < maxPage) {
       setCurrentPage(currentPage + 1);
     }
@@ -34,23 +35,19 @@ const Home = ({ courses, isLoading }) => {
     <>
       <img className={classes.logo} src={logo} alt="logo" />
       {courses ? (
-        <CoursesDashboard courses={currentCourse} isLoading={isLoading} />
+        <CourseDashboard courses={currentCourse} isLoading={isLoading} />
       ) : (
         <NotFound />
       )}
       <Pagination
+        className={classes.pagination}
         coursiesPerPage={coursiesPerPage}
-        totalCourses={courses.length}
         selectPageHandler={selectPageHandler}
-      ></Pagination>
-      <div className={classes.navigation}>
-        <button className={classes.navigationButton} onClick={PrevPageHandler}>
-          Prev page
-        </button>
-        <button className={classes.navigationButton} onClick={NextPageHandler}>
-          Next page
-        </button>
-      </div>
+        currentPage={currentPage}
+        totalCourses={courses.length}
+        PrevPageHandler={PrevPageHandler}
+        NextPageHandler={NextPageHandler}
+      />
     </>
   );
 };

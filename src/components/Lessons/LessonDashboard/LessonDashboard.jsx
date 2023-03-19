@@ -1,11 +1,11 @@
 import React from "react";
 
-import LessonCard from "../LessonCard";
+import LessonDashboardCard from "../LessonDashboardCard";
 // import Skeleton from "../Skeleton";
 
-import classes from "./LessonsDashboard.module.scss";
+import classes from "./LessonDashboard.module.scss";
 
-const CoursesDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
+const LessosDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
 
   //   const skeletons = [...new Array(8)].map((_, index) => (
   //     <Skeleton key={index} />
@@ -14,16 +14,16 @@ const CoursesDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
   return (
     <div className={classes.lessons}>
       {lessons && lessons.map((lesson, index) => (
-        <LessonCard
+        <LessonDashboardCard
           key={lesson.id}
           index={index}
           currentLesson={currentLesson}
-          {...lesson}
           setLesson={() => setCurrentLesson(index)}
+          {...lesson}
         />
       ))}
     </div>
   );
 };
 
-export default CoursesDashboard;
+export default LessosDashboard;
