@@ -4,7 +4,7 @@ import LessonDashboardCard from "../LessonDashboardCard";
 
 import classes from "./LessonDashboard.module.scss";
 
-const LessosDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
+const LessonDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
 
   return (
     <div className={classes.lessons}>
@@ -21,4 +21,4 @@ const LessosDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
   );
 };
 
-export default LessosDashboard;
+export default LessonDashboard;

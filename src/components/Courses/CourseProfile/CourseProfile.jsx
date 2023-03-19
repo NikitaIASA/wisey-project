@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import VideoPlayer from "../../ui/VideoPlayer";
 import LessonDashboard from "../../Lessons/LessonDashboard";
@@ -64,10 +64,10 @@ const CourseProfile = ({ lessons }) => {
 
   return (
     <>
-      <Link className={classes.back} to={navigate(-1)}>
+      <div className={classes.back} onClick={() => navigate(-1)}>
         <img className={classes.back__img} src={arrowBack} alt="arrowBack" />
         <span className={classes.back__text}>Go Back</span>
-      </Link>
+      </div>
 
       {lessons && (
         <>
