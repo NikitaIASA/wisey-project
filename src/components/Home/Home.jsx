@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import CourseDashboard from "../Courses/CourseDashboard";
-import NotFound from "../UI/NotFound";
-import Pagination from "../UI/Pagination/Pagination";
+import NotFound from "../ui/NotFound";
+import Pagination from "../ui/Pagination/Pagination";
 import logo from "../../assets/img/logo.jpg";
 
 import classes from "./Home.module.scss";

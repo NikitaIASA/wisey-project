@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import VideoPlayer from "../../UI/VideoPlayer";
+import VideoPlayer from "../../ui/VideoPlayer";
 import LessonDashboard from "../../Lessons/LessonDashboard";
 import arrowBack from "../../../assets/img/arrowBack.svg";
 

@@ -9,7 +9,7 @@ const Pagination = ({
   selectPageHandler,
   currentPage,
   PrevPageHandler,
-  NextPageHandler
+  NextPageHandler,
 }) => {
   const pageNumber = [];
 

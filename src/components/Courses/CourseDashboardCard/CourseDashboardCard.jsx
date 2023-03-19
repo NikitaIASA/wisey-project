@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import VideoPlayer from "../../UI/VideoPlayer";
+import VideoPlayer from "../../ui/VideoPlayer";
 
 import classes from "./CourseDashboardCard.module.scss";
 
