@@ -11,6 +11,10 @@
   &:hover {
     transform: scale(1.01);
   }
+
+  @media screen and (max-width: 768px) {
+    flex-basis: calc((100% - 20px) / 2);
+  }
   
   @media screen and (max-width: 576px) {
     width: 100%;

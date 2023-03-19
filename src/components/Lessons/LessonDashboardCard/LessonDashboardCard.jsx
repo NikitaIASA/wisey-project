@@ -17,7 +17,7 @@ const LessonDashboardCard = ({
   const { enqueueSnackbar } = useSnackbar();
   const isLocked = (status === LOCKED);
 
-  const onLockedVideoClick = () => {
+  const onLockedVideoClick = () => { // Function to notify the user if the video is blocked
     enqueueSnackbar("This lesson is locked", { variant: 'error' });
   }
 
@@ -26,7 +26,7 @@ const LessonDashboardCard = ({
       className={`${classes.card} ${isLocked && classes.locked} ${
         index === currentLesson && classes.active
       }`}
-      onClick={isLocked ? onLockedVideoClick : onActiveVideoClick}
+      onClick={isLocked ? onLockedVideoClick : onActiveVideoClick} // If the video is blocked - notify the user. If not, show it.
     >
       <div className={classes.cardWrap}>
         <img

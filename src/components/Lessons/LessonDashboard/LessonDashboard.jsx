@@ -1,15 +1,10 @@
 import React from "react";
 
 import LessonDashboardCard from "../LessonDashboardCard";
-// import Skeleton from "../Skeleton";
 
 import classes from "./LessonDashboard.module.scss";
 
 const LessosDashboard = ({ lessons, currentLesson, setCurrentLesson }) => {
-
-  //   const skeletons = [...new Array(8)].map((_, index) => (
-  //     <Skeleton key={index} />
-  //   ));
 
   return (
     <div className={classes.lessons}>

@@ -1,15 +1,19 @@
 import React, { useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import VideoPlayer from "../../ui/VideoPlayer";
 import LessonDashboard from "../../Lessons/LessonDashboard";
+import arrowBack from "../../../assets/img/arrowBack.svg";
+
+import classes from "./CourseProfile.module.scss";
 
 const CourseProfile = ({ lessons }) => {
+  const sortedLessons = lessons.sort((a, b) => a.order - b.order);
+  const navigate = useNavigate();
   const { id } = useParams();
-
   const [currentLesson, setCurrentLesson] = useState(0);
   const playerRef = useRef(null);
-  
+
   console.log(lessons);
   console.log(currentLesson);
 
@@ -37,20 +41,16 @@ const CourseProfile = ({ lessons }) => {
 
   const handlePlayerReady = (player) => {
     playerRef.current = player;
-  
-    // player.on("waiting", () => {
-    //   VideoPlayer.log("player is waiting");
-    // });
-  
-    const courseId = id; 
+
+    const courseId = id;
     const lessonId = lessons[currentLesson].id; // Assuming lesson objects have an "id" property
-    
+
     if (localStorage.getItem(courseId)) {
       const lessonsData = JSON.parse(localStorage.getItem(courseId));
       const currentLessonTime = lessonsData[lessonId] || 0;
       player.currentTime(currentLessonTime);
     }
-  
+
     player.on("timeupdate", () => {
       const lessonsData = JSON.parse(localStorage.getItem(courseId)) || {};
       localStorage.setItem(
@@ -61,16 +61,20 @@ const CourseProfile = ({ lessons }) => {
         })
       );
     });
-  
-    // player.on("dispose", () => {
-    //   VideoPlayer.log("player will dispose");
-    // });
   };
 
   return (
     <>
-      <VideoPlayer options={videoOptions} onReady={handlePlayerReady} />
-      <LessonDashboard lessons={lessons} currentLesson={currentLesson} setCurrentLesson={setCurrentLesson}/>
+      <div className={classes.back} onClick={() => navigate(-1)}>
+        <img className={classes.back__img} src={arrowBack} alt="arrowBack" />
+        <span className={classes.back__text}>Go Back</span>
+      </div>
+      <VideoPlayer className={classes.video} options={videoOptions} onReady={handlePlayerReady} />
+      <LessonDashboard
+        lessons={sortedLessons}
+        currentLesson={currentLesson}
+        setCurrentLesson={setCurrentLesson}
+      />
     </>
   );
 };
