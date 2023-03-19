@@ -27,11 +27,10 @@ const CourseDashboardCard = ({
       if (playPromise !== undefined) {
         playPromise
           .then(function () {
-            // Automatic playback started!
+            // For autoplay start
           })
           .catch(function (error) {
-            // enqueueSnackbar("This video preview doesn't work", {variant: 'error'})
-            // Automatic playback failed.
+            // If autoplay fails
           });
       }
     });

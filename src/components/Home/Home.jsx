@@ -11,6 +11,7 @@ const Home = ({ courses, isLoading }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [coursiesPerPage] = useState(10);
 
+   // logic for pagination
   const lastCourseIndex = currentPage * coursiesPerPage;
   const firstCourseIndex = lastCourseIndex - coursiesPerPage;
   const currentCourse = courses && courses.slice(firstCourseIndex, lastCourseIndex);
@@ -31,14 +32,14 @@ const Home = ({ courses, isLoading }) => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { // Getting currentPage from localStorage after page load
     const savedPage = localStorage.getItem("currentPage");
     if (savedPage) {
       setCurrentPage(parseInt(savedPage));
     }
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { // Setting currentPage to localStorage with every change
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 

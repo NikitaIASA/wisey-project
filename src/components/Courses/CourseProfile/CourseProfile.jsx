@@ -8,7 +8,7 @@ import arrowBack from "../../../assets/img/arrowBack.svg";
 import classes from "./CourseProfile.module.scss";
 
 const CourseProfile = ({ lessons }) => {
-  const sortedLessons = lessons && lessons.sort((a, b) => a.order - b.order);
+  const sortedLessons = lessons && lessons.sort((a, b) => a.order - b.order); // Sorting lessons by order.
   
   const navigate = useNavigate();
   const { id } = useParams();
@@ -43,6 +43,7 @@ const CourseProfile = ({ lessons }) => {
     const courseId = id;
     const lessonId = lessons[currentLesson].id; // Assuming lesson objects have an "id" property
 
+    // Logic for saving videoProgress to localStorage
     if (localStorage.getItem(courseId)) {
       const lessonsData = JSON.parse(localStorage.getItem(courseId));
       const currentLessonTime = lessonsData[lessonId] || 0;
